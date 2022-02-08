@@ -109,3 +109,17 @@ td, tr{
   border-radius: 10px;
   background-color: rgba(0,0,0,0.5);
 }
+
+.refresh{
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+}
+
+.refresh a{
+  font-size: 1.5em;
+  background-color: #595959;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+}

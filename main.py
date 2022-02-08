@@ -15,6 +15,11 @@ def index():
         dates=links.li[otdels.otdel]
         )
 
+@app.route('/refresh')
+def refresh():
+    links.getAll()
+    return redirect("/")
+
 @app.route('/table/<string:foo>')
 def tableStr(foo):
     return redirect("/")
@@ -41,4 +46,4 @@ def handle_bad_request(e):
     return render_template('Error.html')
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=False)
+    app.run(host='localhost', port=8080, debug=True)
