@@ -7,13 +7,14 @@
   </head>
   <header>
     <a class="otdel" href="/otdel/0">Бухгалтерсое отделение</a>
+    <a class="otdel" href="/otdel/2">Расписание звонков</a>
     <a class="otdel" href="/otdel/1">Строительное отделение</a>
   </header>
   <body>
     <div class="date_list">
       <h2>{{ otdel }}</h2>
       {% for date in dates %}
-        <h3><a href="table/{{ date[0] }}">{{ date[1] }}</a></h3>
+        <h3><a href="/table/{{ date[0] }}">{{ date[1] }}</a></h3>
       {% endfor %}
     </div>
   </body>

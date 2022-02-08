@@ -1,5 +1,5 @@
 from flask import Flask, render_template, Markup, redirect
-from utils import getTable
+from utils import getTable, bels
 
 from objects import Links, Otdel
 
@@ -15,9 +15,9 @@ def index():
         dates=links.li[otdels.otdel]
         )
 
-@app.route('/table')
-def table():
-    return render_template('table.html')
+@app.route('/table/<string:foo>')
+def tableStr(foo):
+    return redirect("/")
 
 @app.route('/table/<int:id>')
 def tableId(id):
@@ -28,6 +28,11 @@ def tableId(id):
 
 @app.route('/otdel/<int:id>')
 def func_name(id):
+    if id == 2:
+        return render_template('index.html',
+            otdel="Расписание звонков",
+            dates=bels
+            )
     otdels.set(id)
     return redirect("/")
 
