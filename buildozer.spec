@@ -13,22 +13,22 @@ package.domain = org.IdiotiePatence
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,json,css,html
+source.include_exts = py,png,jpg,kv,atlas,json,css,html,js
 
 # (list) List of inclusions using pattern matching
 #source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
-#source.exclude_exts = spec
+source.exclude_exts = spec, keystore
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin, venv
+source.exclude_dirs = tests, bin, venv
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.0.2
+version = 0.0.7
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -41,12 +41,9 @@ requirements = python3,flask,requests,urllib3,charset_normalizer,certifi,idna,bs
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
-
-# (str) Presplash of the application
 presplash.filename = %(source.dir)s/static/images/splash.png
 
-# (str) Icon of the application
-icon.filename = %(source.dir)s/static/images/icon.png
+icon.filename = icon.png
 
 # (str) Supported orientation (one of landscape, sensorLandscape, portrait or all)
 orientation = portrait
@@ -79,17 +76,17 @@ fullscreen = 0
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
-android.presplash_color = #FFFFFF
+android.presplash_color = "white"
 
 # (string) Presplash animation using Lottie format.
 # see https://lottiefiles.com/ for examples and https://airbnb.design/lottie/
 # for general documentation.
 # Lottie files can be created using various tools, like Adobe After Effect or Synfig.
-#android.presplash_lottie = "path/to/lottie/file.json"
+# android.presplash_lottie = "./spl.json"
 
 # (str) Adaptive icon of the application (used if Android API level is 26+ at runtime)
-#icon.adaptive_foreground.filename = %(source.dir)s/data/icon_fg.png
-#icon.adaptive_background.filename = %(source.dir)s/data/icon_bg.png
+# icon.adaptive_foreground.filename = %(source.dir)s/static/images/icon.png
+# icon.adaptive_background.filename = %(source.dir)s/static/images/icon.png
 
 # (list) Permissions
 android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
@@ -98,22 +95,22 @@ android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-android.api = 28
+# android.api = 30
 
 # (int) Minimum API your APK will support.
-#android.minapi = 21
+# android.minapi = 21
 
 # (int) Android SDK version to use
-#android.sdk = 20
+# android.sdk = 21
 
 # (str) Android NDK version to use
-#android.ndk = 19b
+# android.ndk = 19c
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
 
 # (bool) Use --private data storage (True) or --dir public storage (False)
-#android.private_storage = True
+android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
 #android.ndk_path =
@@ -127,7 +124,7 @@ android.api = 28
 # (bool) If True, then skip trying to update the Android sdk
 # This can be useful to avoid excess Internet downloads or save time
 # when an update is due and you just want to test/build your package
-android.skip_update = True
+# android.skip_update = True
 
 # (bool) If True, then automatically accept SDK license
 # agreements. This is intended for automation only. If set to False,
@@ -270,7 +267,7 @@ android.allow_backup = True
 p4a.branch = develop
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
-#p4a.source_dir =
+# p4a.source_dir = 
 
 # (str) The directory in which python-for-android should look for your own build recipes (if any)
 #p4a.local_recipes =
@@ -290,6 +287,19 @@ p4a.port = 8080
 # NOTE: this is general setuptools integration, having pyproject.toml is enough, no need to generate
 # setup.py if you're using Poetry, but you need to add "toml" to source.include_exts.
 #p4a.setup_py = false
+
+ios.kivy_ios_url = https://github.com/kivy/kivy-ios
+ios.kivy_ios_branch = master
+
+# Another platform dependency: ios-deploy
+# Uncomment to use a custom checkout
+#ios.ios_deploy_dir = ../ios_deploy
+# Or specify URL and branch
+ios.ios_deploy_url = https://github.com/phonegap/ios-deploy
+ios.ios_deploy_branch = 1.10.0
+
+# (bool) Whether or not to sign the code
+ios.codesign.allowed = false
 
 
 #

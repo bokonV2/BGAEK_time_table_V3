@@ -6,7 +6,8 @@ class Links():
     li = ["", ""]
 
     def __init__(self):
-        self.getAll()
+        # self.getAll()
+        pass
 
     def getAll(self):
         self.li[0] = getLinks("http://bgaek.by/category/расписание/buh-otdel/")

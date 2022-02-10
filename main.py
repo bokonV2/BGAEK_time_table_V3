@@ -1,8 +1,11 @@
 from flask import Flask, render_template, Markup, redirect
 from utils import getTable, bels
+# from android.permissions import Permission, request_permissions
 
 from objects import Links, Otdel
 
+
+# request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE])
 
 app = Flask(__name__)
 links = Links()
@@ -10,6 +13,7 @@ otdels = Otdel()
 
 @app.route('/')
 def index():
+    links.getAll()
     return render_template('index.html',
         otdel=otdels.li[otdels.otdel],
         dates=links.li[otdels.otdel]
@@ -46,4 +50,4 @@ def handle_bad_request(e):
     return render_template('Error.html')
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=8080, debug=True)
+    app.run(host='localhost', port=8080, debug=False)
