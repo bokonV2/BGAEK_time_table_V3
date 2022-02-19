@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/css/master.css">
     <link rel="stylesheet" href="/static/css/spin.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script src="/static/js/master.js" charset="utf-8"></script>
   </head>
   <header>
-    <a class="otdel" href="/otdel/0">Бухгалтерсое отделение</a>
+    <a class="otdel" href="/otdel/0">Бухгалтерское отделение</a>
     <a class="otdel" href="/otdel/2">Расписание звонков</a>
     <a class="otdel" href="/otdel/1">Строительное отделение</a>
   </header>
   <body>
-    <div class="date_list">
+    <div class="date_list" id="date_list">
       <h2>{{ otdel }}</h2>
       {% for date in dates %}
-        <h3><a href="/table/{{ date[0] }}">{{ date[1] }}</a></h3>
+        {% if date[1] == "Загрузка..." %}
+          <div id="load" class="spin" style="display: flex; z-index: 0">
+            <div class="loader">Loading...</div>
+          </div>
+        {% elif date[0] == "#" %}
+          <h4 style="margin:2px 0; padding:2px 0;">{{ date[1] }}</h4>
+        {% else %}
+          <h4><a id="linkGR" class="{{ date[0] }}" href="{{ date[0] }}">{{ date[1] }}</a></h4>
+        {% endif %}
       {% endfor %}
     </div>
     <div class="refresh">

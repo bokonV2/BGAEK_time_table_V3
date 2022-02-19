@@ -2,8 +2,10 @@ import json
 from utils import getLinks, getTable
 
 
+load = [["q","Загрузка..."]]
+
 class Links():
-    li = ["", ""]
+    li = [load, load]
 
     def __init__(self):
         # self.getAll()
@@ -12,9 +14,10 @@ class Links():
     def getAll(self):
         self.li[0] = getLinks("http://bgaek.by/category/расписание/buh-otdel/")
         self.li[1] = getLinks("http://bgaek.by/category/расписание/stroi-otdel/")
+        print("GET "*100)
 
 class Otdel(object):
-    li = ["Бухгалтерсое отделение","Строительное отделение"]
+    li = ["Бухгалтерское отделение","Строительное отделение"]
 
     def __init__(self):
         with open("settings.json", "r", encoding="utf-8") as f:
