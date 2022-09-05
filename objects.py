@@ -8,13 +8,11 @@ class Links():
     li = [load, load]
 
     def __init__(self):
-        # self.getAll()
-        pass
+        self.getAll()
 
     def getAll(self):
         self.li[0] = getLinks("http://bgaek.by/category/расписание/buh-otdel/")
         self.li[1] = getLinks("http://bgaek.by/category/расписание/stroi-otdel/")
-        print("GET "*100)
 
 class Otdel(object):
     li = ["Бухгалтерское отделение","Строительное отделение"]
