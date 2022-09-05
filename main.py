@@ -28,11 +28,9 @@ def thr(app):
                 socketio.emit('show-msg', [1,2])
             except:
                 socketio.emit('netErr', [1,2])
-                print("AAAAAAA"*100)
 
 @socketio.on('request-all-msgs')
 def handle_sync():
-
     socketio.start_background_task(thr, current_app._get_current_object())
 
 @app.route('/refresh')
@@ -61,9 +59,9 @@ def func_name(id):
     otdels.set(id)
     return redirect("/")
 
-@app.errorhandler(Exception)
-def handle_bad_request(e):
-    return render_template('Error.html')
+# @app.errorhandler(Exception)
+# def handle_bad_request(e):
+#     return render_template('Error.html')
 
 if __name__ == '__main__':
     # app.run(host='localhost', port=8080, debug=False)

@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
+headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.167 YaBrowser/22.7.4.957 Yowser/2.5 Safari/537.36'}
 
 bels=[
     ("#","1ч  к 08:20 до 09:05"),
@@ -23,8 +24,8 @@ bels=[
 ]
 
 def getLinks(url):
-    re = requests.get(url, timeout=10)
-    soup = BeautifulSoup(re.text, "lxml")
+    re = requests.get(url, timeout=10, headers=headers)
+    soup = BeautifulSoup(re.text)
     titleUrls = soup.findAll("h2", class_="entry-title")
     urls = []
     for id, obj in enumerate(titleUrls):
@@ -33,7 +34,7 @@ def getLinks(url):
     return urls
 
 def getTable(url):
-    re = requests.get(url, timeout=10)
-    soup = BeautifulSoup(re.text, "lxml")
+    re = requests.get(url, timeout=10, headers=headers)
+    soup = BeautifulSoup(re.text)
     obj = soup.find("table")
     return obj

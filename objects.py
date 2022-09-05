@@ -28,3 +28,8 @@ class Otdel(object):
         self.otdel = id
         with open("settings.json", "w", encoding="utf-8") as f:
             f.write(json.dumps({"otdel":id}))
+
+
+if __name__ == '__main__':
+    l= Links()
+    l.getAll()
